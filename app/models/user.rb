@@ -4,7 +4,7 @@ class User < ApplicationRecord
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
     validates :email, presence: true, length: { maximum: 255 },
                       format: { with: VALID_EMAIL_REGEX },
-                      uniqueness: true { case_sensitive: false }
+                      uniqueness: { case_sensitive: false }
 
     has_secure_password # bicrypt gem's helper method, it allows to use "authenticate method which returns either false or the user object itself"
     validates :password, presence: true, length: { minimum: 6 }
