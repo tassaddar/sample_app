@@ -15,10 +15,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "You have successfuly signed up!"
+      flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
     else
-      render "new"
+      flash.now[:danger] = "There was a problem with sign up"
+      render 'new'
     end
   end
 
